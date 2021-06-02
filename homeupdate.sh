@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pushd ~/dotfiles
+pushd ~/systst
 nix-channel --update
 home-manager switch -f ./users/mudrii/home.nix
 popd
