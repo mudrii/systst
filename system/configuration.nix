@@ -54,8 +54,7 @@
   };
 
   fonts = {
-    #fontDir.enable = true;
-    enableFontDir = true;
+    fontDir.enable = true;
     enableGhostscriptFonts = true;
 
     fonts = with pkgs; [
@@ -145,6 +144,6 @@
       '';
   };
 
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.05"; # Did you read the comment?
 
 }
