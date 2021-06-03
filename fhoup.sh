@@ -1,6 +1,6 @@
 #!/bin/sh
 
 pushd ~/systst
-nix build .#homeManagerConfiguration.mudrii.activationPackage
+nix build .#homeManagerConfigurations.mudrii.activationPackage
 ./result/activate
 popd
