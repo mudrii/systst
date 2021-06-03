@@ -2,12 +2,14 @@
   description = "My flakes copnfig";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-20.09";
+    #nixpkgs.url = "nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-20.09";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, unstable, home-manager, ... }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -24,7 +26,7 @@
         homeDirectory = "/home/mudrii";
         configuration = {
           imports = [
-            /home/mudrii/.config/nixpkgs/home.nix
+            ./users/mudrii/home.nix
           ];
         };
       };
@@ -33,9 +35,9 @@
       nixtst = lib.nixosSystem {
         inherit system;
         modules = [
-          ./configuration.nix
+          ./system/configuration.nix
         ];
-      }; 
+      };
     };
   };
 }
