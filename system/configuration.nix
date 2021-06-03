@@ -61,9 +61,10 @@
       powerline-fonts
       nerdfonts
     ];
-  };  
+  };
 
   users = {
+    mutableUsers = false;
     users.mudrii = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
@@ -86,7 +87,7 @@
       trash-cli
       exa
     ];
-    
+
     shellAliases = {
       cp = "cp -i";
       diff = "diff --color=auto";
@@ -134,7 +135,7 @@
   };
 
   nix = {
-    package = pkgs.nixFlakes; 
+    package = pkgs.nixFlakes;
     autoOptimiseStore = true;
     allowedUsers = [ "@wheel" ];
     trustedUsers = [ "@wheel" ];
