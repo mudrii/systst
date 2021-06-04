@@ -13,13 +13,15 @@
       nixtst = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./system/configuration.nix
+          ./configuration.nix
+          /*
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.mudrii = import ./users/mudrii/home.nix;
-          }
+            }
+          */
         ];
       };
     };
