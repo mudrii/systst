@@ -7,6 +7,7 @@
   home = {
     username = "mudrii";
     homeDirectory = "/home/mudrii";
+/*
     packages = with pkgs; [
       sshfs
       tmux
@@ -52,7 +53,7 @@
       fd
       nodejs
   ];
-
+*/
   stateVersion = "21.05";
   };
 }

@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true
+  };
+in
+
 {
   imports =
     [ ./hardware-configuration.nix ];
@@ -185,13 +191,27 @@
 
   nix = {
     package = pkgs.nixFlakes;
+    useSandbox = true;
     autoOptimiseStore = true;
+    readOnlyStore = false;
     allowedUsers = [ "@wheel" ];
     trustedUsers = [ "@wheel" ];
 
     extraOptions = ''
       experimental-features = nix-command flakes
       '';
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d --max-freed $((64 * 1024**3))";
+      # dates = "Mon *-*-* 06:00:00";
+    };
+
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
   };
 
   system.stateVersion = "21.05"; # Did you read the comment?
