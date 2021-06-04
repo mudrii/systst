@@ -4,7 +4,7 @@
 
   programs.home-manager.enable = true;
 
-  home = { 
+  home = {
     username = "mudrii";
     homeDirectory = "/home/mudrii";
     packages = with pkgs; [
@@ -16,18 +16,18 @@
       gitAndTools.git-hub
       gitAndTools.gh
       git-crypt
-      git-lfs   
+      git-lfs
       kubernetes
       kubernetes-helm
       kubeseal
       helmfile
       helmsman
-      kind  
+      kind
       kube3d
-      argo  
-      argocd   
+      argo
+      argocd
       kustomize
-      k9s    
+      k9s
       kubectx
       nodejs
       python38Full
@@ -44,15 +44,15 @@
       aspellDicts.en
       asciinema
       highlight
-      jq 
+      jq
       bat
       ripgrep-all
-      tldr 
+      tldr
       procs
-      fd    
+      fd
       nodejs
   ];
-  
-  stateVersion = "21.03";
+
+  stateVersion = "21.05";
   };
 }
