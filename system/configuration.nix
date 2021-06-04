@@ -76,6 +76,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      gitAndTools.gitFull
       binutils
       gnutls
       wget
