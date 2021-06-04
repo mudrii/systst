@@ -1,41 +1,24 @@
 {
-  description = "My flakes copnfig";
+  description = "NixOS configuration";
 
   inputs = {
-    #nixpkgs.url = "nixpkgs/nixos-21.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, unstable, home-manager, ... }:
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = { allowUnfree = true; };
-    };
-    lib = nixpkgs.lib;
-
-  in {
-    homeManagerConfigurations = {
-      mudrii = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        username = "mudrii";
-        homeDirectory = "/home/mudrii";
-        configuration = {
-          imports = [
-            ./users/mudrii/home.nix
-          ];
-        };
-      };
-    };
+  outputs = { home-manager, nixpkgs, ... }: {
     nixosConfigurations = {
-      nixtst = lib.nixosSystem {
-        inherit system;
+      nixtst = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
           ./system/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.mudrii = import ./users/mudrii/home.nix;
+          }
         ];
       };
     };
