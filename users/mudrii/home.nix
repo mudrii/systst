@@ -33,7 +33,7 @@ in
        git-crypt
        git-lfs
   ];
-*/
+
   stateVersion = "21.05";
   };
 }
