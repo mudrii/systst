@@ -2,7 +2,7 @@
 
 let
   unstable = import <unstable> {
-    config.allowUnfree = true
+    config.allowUnfree = true;
   };
 in
 
