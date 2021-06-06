@@ -3,10 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, ... }: {
+  outputs = { nixpkgs, ... }: {
     nixosConfigurations = {
       nixtst = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

@@ -1,13 +1,7 @@
 { config, pkgs, ... }:
-/*
-let
-  unstable = import inputs.nixpkgs-unstable {
-    config = nixpkgs.config;
-    localSystem = "x86_64-linux";
-  };
-in
-*/
+
 {
+
   imports =
     [ ./hardware-configuration.nix ];
 
@@ -170,6 +164,7 @@ in
   };
 
   nixpkgs = {
+    overlays = [ overlay-unstable ];
     config = {
       allowBroken = true;
       allowUnfree = true;
