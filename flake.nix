@@ -17,7 +17,7 @@
                 unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
               };
             in
-       {
+              {
                 imports =
                   [ ./hardware-configuration.nix ];
 
