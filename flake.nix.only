@@ -17,11 +17,11 @@
                 unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
               };
             in
-              {
-                nixpkgs.overlays = [ overlay-unstable ];
-              }
+            {
+              nixpkgs.overlays = [ overlay-unstable ];
+            }
           )
-#?          nixpkgs.nixosModules.notDetected
+          #?          nixpkgs.nixosModules.notDetected
           ./configuration.nix
         ];
       };
