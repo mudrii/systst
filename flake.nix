@@ -27,7 +27,6 @@
 
               boot = {
                 kernelPackages = pkgs.linuxPackages_latest;
-
                 loader = {
                   efi.canTouchEfiVariables = true;
                   grub = {
@@ -38,7 +37,6 @@
                     device = "nodev";
                   };
                 };
-
                 initrd.luks.devices = {
                   crypt = {
                     device = "/dev/vda2";
@@ -75,7 +73,6 @@
               fonts = {
                 fontDir.enable = true;
                 enableGhostscriptFonts = true;
-
                 fonts = with pkgs; [
                   powerline-fonts
                   nerdfonts
@@ -134,14 +131,12 @@
                   gnutls
                   wget
                   curl
-                  neovim
                   htop
                   bind
                   mkpasswd
                   trash-cli
                   exa
                 ];
-
                 shellAliases = {
                   cp = "cp -i";
                   diff = "diff --color=auto";
@@ -172,6 +167,14 @@
                   enableSSHSupport = true;
                 };
                 vim.defaultEditor = true;
+                nano.nanorc = ''
+                  unset backup
+                  set nonewlines
+                  set nowrap
+                  set tabstospaces
+                  set tabsize 4
+                  set constantshow
+                '';
               };
 
               virtualisation = {
@@ -193,7 +196,6 @@
 
               nixpkgs = {
                 overlays = [ overlay-unstable ];
-
                 config = {
                   allowBroken = true;
                   allowUnfree = true;
@@ -207,26 +209,20 @@
                 readOnlyStore = false;
                 allowedUsers = [ "@wheel" ];
                 trustedUsers = [ "@wheel" ];
-
                 extraOptions = ''
                   experimental-features = nix-command flakes
                 '';
-
                 gc = {
                   automatic = true;
                   dates = "weekly";
                   options = "--delete-older-than 7d --max-freed $((64 * 1024**3))";
-                  # dates = "Mon *-*-* 06:00:00";
                 };
-
                 optimise = {
                   automatic = true;
                   dates = [ "weekly" ];
                 };
               };
-
               system.stateVersion = "21.05"; # Did you read the comment?
-
             }
           )
         ];
