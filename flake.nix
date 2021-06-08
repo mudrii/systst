@@ -19,7 +19,9 @@
             in
             {
               imports =
-                [ ./hardware-configuration.nix ];
+                [
+                  ./hardware-configuration.nix
+                ];
 
               fileSystems."/" = { options = [ "noatime" "nodiratime" ]; };
 
@@ -127,7 +129,7 @@
                   kustomize
                   k9s
                   kubectx
-                  unstable.jq
+                  #unstable.jq
                   binutils
                   gnutls
                   wget
@@ -169,9 +171,19 @@
                   enable = true;
                   enableSSHSupport = true;
                 };
+                vim.defaultEditor = true;
+              };
+
+              virtualisation = {
+                docker = {
+                  enable = true;
+                  autoPrune.enable = true;
+                  enableOnBoot = true;
+                };
               };
 
               services = {
+                lorri.enable = true;
                 openssh = {
                   enable = true;
                   permitRootLogin = "no";
