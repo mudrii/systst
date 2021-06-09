@@ -29,7 +29,8 @@
       mkpasswd
       trash-cli
       exa
-#      direnv
+      direnv
+      nix-direnv
     ];
 
     shellAliases = {
