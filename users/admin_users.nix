@@ -7,6 +7,7 @@
       enable = true;
       wheelNeedsPassword = false;
     };
+  };
 
   users = {
     mutableUsers = false;
