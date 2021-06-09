@@ -55,12 +55,9 @@
   };
 
   programs = {
-#    gnupg.agent = {
-#      enable = true;
-#      enableSSHSupport = true;
-#    };
     ssh.startAgent = false;
     vim.defaultEditor = true;
+    fish.enable = true;
     nano.nanorc = ''
       unset backup
       set nonewlines
