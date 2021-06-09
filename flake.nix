@@ -56,13 +56,6 @@
                 hostName = "nixtst"; # Define your hostname.
               };
 
-              security = {
-                sudo = {
-                  enable = true;
-                  wheelNeedsPassword = false;
-                };
-              };
-
               i18n = {
                 defaultLocale = "en_US.UTF-8";
                 supportedLocales = [ "en_US.UTF-8/UTF-8" ];
@@ -77,6 +70,7 @@
                 fontDir.enable = true;
                 enableGhostscriptFonts = true;
                 fonts = with pkgs; [
+                  corefonts
                   powerline-fonts
                   nerdfonts
                 ];
@@ -88,6 +82,14 @@
                   enable = true;
                   permitRootLogin = "no";
                   passwordAuthentication = false;
+                };
+              };
+
+              virtualisation = {
+                docker = {
+                  enable = true;
+                  autoPrune.enable = true;
+                  enableOnBoot = true;
                 };
               };
 

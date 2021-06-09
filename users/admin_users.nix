@@ -2,6 +2,12 @@
 
 {
 
+  security = {
+    sudo = {
+      enable = true;
+      wheelNeedsPassword = false;
+    };
+
   users = {
     mutableUsers = false;
     users.mudrii = {

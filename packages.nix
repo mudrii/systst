@@ -59,6 +59,7 @@
       enable = true;
       enableSSHSupport = true;
     };
+    ssh.startAgent = false;
     vim.defaultEditor = true;
     nano.nanorc = ''
       unset backup
@@ -68,14 +69,6 @@
       set tabsize 4
       set constantshow
     '';
-  };
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune.enable = true;
-      enableOnBoot = true;
-    };
   };
 
 }
