@@ -1,3 +1,7 @@
+{ config, pkgs, ... }:
+
+{
+
   fileSystems."/" = { options = [ "noatime" "nodiratime" ]; };
 
   boot = {
@@ -66,7 +70,6 @@
   };
 
   nixpkgs = {
-    overlays = [ overlay-unstable ];
     config = {
       allowBroken = true;
       allowUnfree = true;

@@ -18,6 +18,8 @@
               };
             in
             {
+              nixpkgs.overlays = [ overlay-unstable ];
+
               imports =
                 [
                   ./hardware-configuration.nix
