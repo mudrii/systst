@@ -21,6 +21,8 @@
               imports =
                 [
                   ./hardware-configuration.nix
+                  ./users/admin_users.nix
+                  ./packages.nix
                 ];
 
               fileSystems."/" = { options = [ "noatime" "nodiratime" ]; };
@@ -78,7 +80,7 @@
                   nerdfonts
                 ];
               };
-
+/*
               users = {
                 mutableUsers = false;
                 users.mudrii = {
@@ -184,7 +186,7 @@
                   enableOnBoot = true;
                 };
               };
-
+*/
               services = {
                 lorri.enable = true;
                 openssh = {
