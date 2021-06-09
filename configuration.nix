@@ -53,7 +53,6 @@
   };
 
   services = {
-    lorri.enable = true;
     openssh = {
       enable = true;
       permitRootLogin = "no";
