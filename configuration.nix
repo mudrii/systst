@@ -82,9 +82,11 @@
     readOnlyStore = false;
     allowedUsers = [ "@wheel" ];
     trustedUsers = [ "@wheel" ];
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+    "experimental-features = nix-command flakes";
+#    extraOptions = ''
+#      experimental-features = nix-command flakes
+#    '';
     gc = {
       automatic = true;
       dates = "weekly";
