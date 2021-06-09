@@ -58,7 +58,6 @@
     ssh.startAgent = false;
     vim.defaultEditor = true;
     fish.enable = true;
-    bash.enable = true;
     nano.nanorc = ''
       unset backup
       set nonewlines
