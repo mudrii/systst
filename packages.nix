@@ -12,7 +12,7 @@
       kubeseal
       helmfile
       helmsman
-      kind
+      unstable.kind
       kube3d
       argo
       argocd

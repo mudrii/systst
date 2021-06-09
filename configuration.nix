@@ -116,7 +116,6 @@
       gnutls
       wget
       curl
-      neovim
       htop
       bind
       mkpasswd
@@ -144,7 +143,6 @@
       rml = "trash-list";
       sudo = "sudo -i";
       vdir = "vdir --color=auto";
-      vim = "nvim";
     };
   };
 
@@ -153,9 +151,27 @@
       enable = true;
       enableSSHSupport = true;
     };
+    vim.defaultEditor = true;
+    nano.nanorc = ''
+      unset backup
+      set nonewlines
+      set nowrap
+      set tabstospaces
+      set tabsize 4
+      set constantshow
+    '';
+  };
+
+  virtualisation = {
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
+      enableOnBoot = true;
+    };
   };
 
   services = {
+    lorri.enable = true;
     openssh = {
       enable = true;
       permitRootLogin = "no";
@@ -187,7 +203,6 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d --max-freed $((64 * 1024**3))";
-      # dates = "Mon *-*-* 06:00:00";
     };
 
     optimise = {
