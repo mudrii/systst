@@ -25,8 +25,8 @@
       curl
       bind
       mkpasswd
-#      direnv
-#      nix-direnv
+      direnv
+      nix-direnv
     ];
 
     shellAliases = {
