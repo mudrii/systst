@@ -19,16 +19,12 @@
       kustomize
       k9s
       kubectx
-#      jq
       binutils
       gnutls
       wget
       curl
-#      htop
       bind
       mkpasswd
-#      trash-cli
-#      exa
       direnv
       nix-direnv
     ];
