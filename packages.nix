@@ -40,17 +40,9 @@
       egrep = "egrep --color=auto";
       fgrep = "fgrep --color=auto";
       grep = "grep --color=auto";
-#      la = "exa -alg --group-directories-first -s=type --icons";
-      lless = "set -gx LESSOPEN '|pygmentize -f terminal256 -g -P style=monokai %s' && set -gx LESS '-R' && less -m -g -i -J -u -Q";
-#      ll = "exa -la";
-#      ls = "exa";
       mv = "mv -i";
       ping = "ping -c3";
       ps = "ps -ef";
-#      rm = "trash-put";
-#      unrm = "trash-restore";
-#      rmcl = "trash-empty";
-#      rml = "trash-list";
       sudo = "sudo -i";
       vdir = "vdir --color=auto";
     };
