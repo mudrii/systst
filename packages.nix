@@ -5,8 +5,6 @@
   environment = {
     systemPackages = with pkgs; [
       gitAndTools.gitFull
-      google-cloud-sdk-gce
-      pulumi-bin
       kubernetes
       kubernetes-helm
       kubeseal
