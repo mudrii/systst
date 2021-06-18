@@ -4,7 +4,8 @@
 
   environment = {
     systemPackages = with pkgs; [
-      gitAndTools.gitFull
+      git
+      gh
       kubernetes
       kubernetes-helm
       kubeseal
