@@ -57,6 +57,7 @@
       enable = true;
       permitRootLogin = "no";
       passwordAuthentication = false;
+      ports = [2022];
     };
   };
 
@@ -97,5 +98,18 @@
       dates = [ "weekly" ];
     };
   };
-  system.stateVersion = "21.05"; # Did you read the comment?
+  system = {
+    stateVersion = "21.05"; # Did you read the comment?
+    autoUpgrade = {
+      enable = true;
+      allowReboot = true;
+      flake = "github:mudrii/systst";
+      flags = [
+        "--recreate-lock-file"
+        "--no-write-lock-file"
+        "-L" # print build logs
+       ];
+      dates = "daily";
+    };
+  };  
 }
