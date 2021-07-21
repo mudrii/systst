@@ -1,12 +1,4 @@
 { config, pkgs, ... }:
-/*
-let
-  unstable = import inputs.nixpkgs-unstable {
-    config = nixpkgs.config;
-    localSystem = "x86_64-linux";
-  };
-in
-*/
 {
 
   programs.home-manager.enable = true;
@@ -18,7 +10,6 @@ in
     packages = with pkgs; [
        tmux
        sshfs
-       #unstable.asciinema
        asciinema
        highlight
        nodejs
