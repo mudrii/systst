@@ -52,10 +52,12 @@
   };
 
   services = {
+    nixos-auto-update.enable = true;
     openssh = {
       enable = true;
       permitRootLogin = "no";
       passwordAuthentication = false;
+      forwardX11 = true;
       ports = [2022];
     };
   };
@@ -65,6 +67,79 @@
       enable = true;
       autoPrune.enable = true;
       enableOnBoot = true;
+    };
+  };
+
+  users = {
+    mutableUsers = false;
+    users.mudrii = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "docker" ];
+      shell = pkgs.fish;
+      # mkpasswd -m sha-512 password
+      hashedPassword = "$6$ewXNcoQRNG$czTic9vE8CGH.eo4mabZsHVRdmTjtJF4SdDnIK0O/4STgzB5T2nD3Co.dRpVS3/uDD24YUxWrTDy2KRv7m/3N1";
+      openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8/tE2+oIwLnCnfzPSTqiZaeW++wUPNW5fOi124eGzWfcnOQGrjuwir3sZDKMS9DLqSTDNtvJ3/EZf6z/MLN/uxUE8lA+aKaSs0yopE7csQ89Aqkvp5fvCpz3BJuZgpxtwebPZyTc7QRGQWE4lM3fix3aJhfj827bdxA+sCiq8OnNiwYSXrIag1cQigafhLy6tYtCKdWcxzJq2ebGJF2wu2LU0zArb1SAOanhEOXxz0dG1I/7yMDBDC92R287nWpL+BwxuQcDv0xh/sWnViKixKv+B9ewJnz98iQPcg3WmYWe9BYAcaqkbgMqbwfUPqOHhFXmiQWUpOjsni2O6VoiN mudrii@nixos" ];
+      packages = with pkgs; [
+        python39Full
+      ];
+    };
+  };
+
+  programs = {
+    ssh.startAgent = false;
+    vim.defaultEditor = true;
+    fish.enable = true;
+    nano.nanorc = ''
+      unset backup
+      set nonewlines
+      set nowrap
+      set tabstospaces
+      set tabsize 4
+      set constantshow
+    '';
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      google-cloud-sdk-gce
+      git
+      gh
+      unstable.pulumi-bin
+      inotify-tools
+      nodejs
+      kubernetes
+      kubernetes-helm
+      kubeseal
+      helmfile
+      helmsman
+      unstable.kind
+      unstable.kube3d
+      argo
+      argocd
+      kustomize
+      k9s
+      kubectx
+      binutils
+      gnutls
+      wget
+      curl
+      bind
+      mkpasswd
+      cachix
+    ];
+
+    shellAliases = {
+      cp = "cp -i";
+      diff = "diff --color=auto";
+      dmesg = "dmesg --color=always | lless";
+      egrep = "egrep --color=auto";
+      fgrep = "fgrep --color=auto";
+      grep = "grep --color=auto";
+      mv = "mv -i";
+      ping = "ping -c3";
+      ps = "ps -ef";
+      sudo = "sudo -i";
+      vdir = "vdir --color=auto";
     };
   };
 
@@ -96,6 +171,12 @@
       automatic = true;
       dates = [ "weekly" ];
     };
+/*    binaryCaches = [
+      "https://matrix.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "matrix.cachix.org-1:h2ZM1LtvJBQhCb7a2Z/UpO8PKKIUlIvifvrFKfnHkro="
+    ];*/
   };
   system = {
     stateVersion = "21.05"; # Did you read the comment?
