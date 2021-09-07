@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
 
@@ -52,7 +52,6 @@
   };
 
   services = {
-    nixos-auto-update.enable = true;
     openssh = {
       enable = true;
       permitRootLogin = "no";
