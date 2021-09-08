@@ -52,7 +52,19 @@
   };
 
   services = {
-    logrotate.enable = true;
+    logrotate = {
+      enable = true;
+      config = ''
+        compress
+        create
+        daily
+        dateext
+        delaycompress
+        missingok
+        notifempty
+        rotate 31
+      '';
+    };
     openssh = {
       enable = true;
       permitRootLogin = "no";
