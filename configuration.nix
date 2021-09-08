@@ -52,6 +52,7 @@
   };
 
   services = {
+    logrotate.enable = true;
     openssh = {
       enable = true;
       permitRootLogin = "no";
