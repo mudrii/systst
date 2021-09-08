@@ -54,7 +54,7 @@
   services = {
     logrotate = {
       enable = true;
-      config = ''
+      extraConfig = ''
         compress
         create
         daily
