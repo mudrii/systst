@@ -2,6 +2,10 @@
 
 {
 
+  imports = [
+    ./services/nixos-auto-update.nix
+  ];
+
   fileSystems."/" = { options = [ "noatime" "nodiratime" ]; };
 
   boot = {
@@ -52,6 +56,7 @@
   };
 
   services = {
+    nixos-auto-update.enable = true;    
     logrotate = {
       enable = true;
       extraConfig = ''
