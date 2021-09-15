@@ -28,13 +28,19 @@
     };
   };
 
-  time.timeZone = "Asia/Singapore";
-
   networking = {
     useDHCP = false;
     interfaces.enp1s0.useDHCP = true;
     hostName = "nixtst"; # Define your hostname.
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 80 443 2022 ];
+      allowedUDPPorts = [ 53 ];
+      allowPing = true;
+    };
   };
+
+  time.timeZone = "Asia/Singapore";
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -56,7 +62,7 @@
   };
 
   services = {
-    nixos-auto-update.enable = true;    
+    nixos-auto-update.enable = true;
     logrotate = {
       enable = true;
       extraConfig = ''
@@ -75,7 +81,7 @@
       permitRootLogin = "no";
       passwordAuthentication = false;
       forwardX11 = true;
-      ports = [2022];
+      ports = [ 2022 ];
     };
   };
 
@@ -195,12 +201,12 @@
       automatic = true;
       dates = [ "weekly" ];
     };
-/*    binaryCaches = [
+    /*    binaryCaches = [
       "https://matrix.cachix.org"
-    ];
-    binaryCachePublicKeys = [
+      ];
+      binaryCachePublicKeys = [
       "matrix.cachix.org-1:h2ZM1LtvJBQhCb7a2Z/UpO8PKKIUlIvifvrFKfnHkro="
-    ];*/
+      ];*/
   };
   system = {
     stateVersion = "21.05"; # Did you read the comment?
@@ -212,7 +218,7 @@
         "--recreate-lock-file"
         "--no-write-lock-file"
         "-L" # print build logs
-       ];
+      ];
       dates = "daily";
     };
   };
