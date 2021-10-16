@@ -134,7 +134,8 @@
       google-cloud-sdk-gce
       git
       gh
-      unstable.pulumi-bin
+      pulumi-bin
+      #unstable.pulumi-bin
       inotify-tools
       nodejs
       kubernetes
