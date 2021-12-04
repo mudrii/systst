@@ -210,7 +210,7 @@
       ];*/
   };
   system = {
-    stateVersion = "21.05"; # Did you read the comment?
+    stateVersion = "21.11"; # Did you read the comment?
     autoUpgrade = {
       enable = true;
       allowReboot = true;
